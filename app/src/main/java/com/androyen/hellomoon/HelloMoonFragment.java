@@ -1,5 +1,6 @@
 package com.androyen.hellomoon;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ public class HelloMoonFragment extends Fragment {
     private Button mPlayButton;
     private Button mStopButton;
 
+    private AudioPlayer mPlayer;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -27,5 +30,11 @@ public class HelloMoonFragment extends Fragment {
         mStopButton = (Button)v.findViewById(R.id.hellomoon_stopButton);
 
         return v;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPlayer.stop();
     }
 }
